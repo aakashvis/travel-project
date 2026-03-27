@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelEasy - Book Your Trip</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<form id="bookingForm">
+  <input type="text" name="name" placeholder="Name" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="text" name="phone" placeholder="Phone" required />
+  <input type="text" name="destination" placeholder="Destination" required />
+  <input type="date" name="date" required />
+  <input type="number" name="travelers" placeholder="Travelers" required />
+  <textarea name="requirements" placeholder="Requirements"></textarea>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  const data = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    phone: formData.get("phone"),
+    destination: formData.get("destination"),
+    date: formData.get("date"),
+    travelers: formData.get("travelers"),
+    requirements: formData.get("requirements")
+  };
+
+  try {
+    const response = await fetch("http://localhost:5000/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)   // ✅ send actual form data
+    });
+
+    const result = await response.json();
+    alert("Success");
+    console.log(result);
+
+  } catch (err) {
+    console.error(err);
+    alert("Error submitting form");
+  }
+});
+</script>
+</body>
+</html>
