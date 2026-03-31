@@ -15,5 +15,6 @@
     "express": "^5.2.1",
     "mailtrap": "^4.5.1",
     "mongoose": "^9.3.2"
+    "nodemailer": "^6.10.1"
   }
 }
