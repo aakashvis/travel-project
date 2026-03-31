@@ -47,7 +47,7 @@ document.getElementById("bookingForm").addEventListener("submit", async function
 if (!response.ok) {
   await new Promise(res => setTimeout(res, 15000)); // wait 15 sec
 
-  const retryResponse = await fetch("https://travel-project-1-o18c.onrender.com/api/bookings", {
+  const retryResponse = await fetch("https://travel-project-0rk9.onrender.com/api/bookings", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
